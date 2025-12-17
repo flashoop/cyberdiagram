@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberDiagram - AI-Powered Cloud Security Testing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           GLOBAL STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1F2937;
+            background-color: #FFFFFF;
+            font-size: 16px;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #E5E7EB;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563EB;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4B5563;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #2563EB;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #2563EB;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            margin-top: 70px;
+            padding: 5rem 2rem 3rem;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .highlight {
+            color: #2563EB;
+            position: relative;
+        }
+
+        .hero .subheadline {
+            font-size: 1.25rem;
+            color: #6B7280;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: #2563EB;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1E40AF;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #2563EB;
+            border-color: #E5E7EB;
+        }
+
+        .btn-secondary:hover {
+            border-color: #2563EB;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        /* ============================================
+           VISUAL PLACEHOLDER (Attack Diagram)
+           ============================================ */
+        .visual-section {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .visual-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .visual-placeholder {
+            width: 100%;
+            min-height: 500px;
+            background: #F9FAFB;
+            border: 2px dashed #D1D5DB;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visual-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(59, 130, 246, 0.03) 100%);
+        }
+
+        .placeholder-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .placeholder-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .placeholder-icon svg {
+            width: 40px;
+            height: 40px;
+            color: #2563EB;
+        }
+
+        .placeholder-content h3 {
+            font-size: 1.5rem;
+            color: #4B5563;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .placeholder-content p {
+            color: #9CA3AF;
+            font-size: 0.95rem;
+        }
+
+        /* ============================================
+           PROBLEM SECTION
+           ============================================ */
+        .problem-section {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .problem-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #EFF6FF;
+            color: #2563EB;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: #6B7280;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            padding: 2rem;
+            background: #F9FAFB;
+            border-radius: 12px;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-color: #2563EB;
+        }
+
+        .problem-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .problem-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+
+        .problem-card p {
+            color: #6B7280;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           SOLUTION SECTION
+           ============================================ */
+        .solution-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%);
+        }
+
+        .solution-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.1);
+            border-color: #2563EB;
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-icon svg {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #6B7280;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* ============================================
+           HOW IT WORKS SECTION
+           ============================================ */
+        .how-it-works {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .how-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .steps-container {
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .step {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .step-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-content p {
+            color: #6B7280;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* ============================================
+           FOUNDER CREDIBILITY SECTION
+           ============================================ */
+        .credibility-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+        }
+
+        .credibility-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .credentials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .credential-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .credential-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2563EB;
+            margin-bottom: 0.5rem;
+        }
+
+        .credential-label {
+            color: #6B7280;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .certifications {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .cert-badge {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 2px solid #2563EB;
+            border-radius: 20px;
+            color: #2563EB;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .founder-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 3rem 0;
+            gap: 1.5rem;
+        }
+
+        .founder-image-container {
+            position: relative;
+            width: 160px;
+            height: 160px;
+        }
+
+        .founder-image {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            background: linear-gradient(135deg, #E5E7EB 0%, #D1D5DB 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #6B7280;
+        }
+
+        .founder-info {
+            text-align: center;
+        }
+
+        .founder-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-title {
+            font-size: 1.1rem;
+            color: #6B7280;
+            margin-bottom: 1rem;
+        }
+
+        .linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #0A66C2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+        }
+
+        .linkedin-link:hover {
+            background: #004182;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(10, 102, 194, 0.4);
+        }
+
+        .linkedin-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ============================================
+           FINAL CTA SECTION
+           ============================================ */
+        .final-cta {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #1E40AF 0%, #2563EB 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .final-cta p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .final-cta .btn-primary {
+            background: white;
+            color: #2563EB;
+        }
+
+        .final-cta .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            padding: 3rem 2rem 2rem;
+            background: #111827;
+            color: #9CA3AF;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #9CA3AF;
+            text-decoration: none;
+            line-height: 2;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #2563EB;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: #6B7280;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subheadline {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-number {
+                margin: 0 auto;
+            }
+
+            .visual-placeholder {
+                min-height: 350px;
+            }
+
+            .founder-image-container,
+            .founder-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .founder-name {
+                font-size: 1.5rem;
+            }
+
+            .founder-title {
+                font-size: 1rem;
+            }
+        }
+
+        /* ============================================
+           SMOOTH SCROLLING
+           ============================================ */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">CD</div>
+                CyberDiagram
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#product">Product</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container fade-in-up">
+            <h1>Enterprise Security for <span class="highlight">Growing Businesses</span></h1>
+            <p class="subheadline">
+                AI-powered cloud penetration testing that finds vulnerabilities before attackers do—presented in visual diagrams anyone can understand.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Request Early Access</a>
+                <a href="#" class="btn btn-secondary">See Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Placeholder Section -->
+    <section class="visual-section">
+        <div class="visual-container">
+            <div class="visual-placeholder">
+                <div class="placeholder-content">
+                    <div class="placeholder-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3>Attack Path Visualization</h3>
+                    <p>Interactive security diagrams showing how attackers could breach your systems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="problem-container">
+            <div class="section-header">
+                <span class="section-tag">The Problem</span>
+                <h2 class="section-title">SMEs Face a Critical Security Gap</h2>
+                <p class="section-description">
+                    Small and medium-sized enterprises struggle to protect their cloud infrastructure with traditional security approaches
+                </p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>Limited Security Resources</h3>
+                    <p>Most SMEs lack dedicated security teams, leaving critical vulnerabilities undetected and systems exposed to attacks.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                        </svg>
+                    </div>
+                    <h3>Complex Cloud Environments</h3>
+                    <p>Multi-cloud deployments across AWS, GCP, and Azure create blind spots that traditional security tools can't address.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>Costly Traditional Pentests</h3>
+                    <p>Manual penetration tests cost $15,000-50,000+, happen once a year, and quickly become outdated as your infrastructure evolves.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="product" class="solution-section">
+        <div class="solution-container">
+            <div class="section-header">
+                <span class="section-tag">Our Solution</span>
+                <h2 class="section-title">AI-Driven Cloud Penetration Testing</h2>
+                <p class="section-description">
+                    Continuous, automated security assessment with visual reporting that makes findings immediately actionable
+                </p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3>Continuous Protection</h3>
+                    <p>24/7 automated monitoring of your cloud infrastructure for misconfigurations, exposed resources, and security gaps. Traditional pentests happen once a year—your threats evolve daily.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Visual Intelligence</h3>
+                    <p>Complex vulnerabilities transformed into clear visual maps showing exactly how attackers could breach your systems—and how to stop them. Executive and technical teams both understand immediately.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                        </svg>
+                    </div>
+                    <h3>Multi-Cloud Mastery</h3>
+                    <p>One platform, all your clouds. Comprehensive coverage across AWS, GCP, Azure, and hybrid environments. Built by cloud security veterans from Huawei and Alibaba.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="how-container">
+            <div class="section-header">
+                <span class="section-tag">How It Works</span>
+                <h2 class="section-title">Security Made Simple</h2>
+                <p class="section-description">
+                    From connection to remediation in four intelligent steps
+                </p>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Connect Your Cloud</h3>
+                        <p>Securely connect your AWS, GCP, or Azure accounts in minutes. Our read-only access ensures your infrastructure remains protected while we analyze your security posture.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>AI-Powered Scanning</h3>
+                        <p>Our advanced AI models continuously scan your infrastructure, identifying vulnerabilities, misconfigurations, and potential attack vectors that traditional tools miss.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Visual Attack Paths</h3>
+                        <p>Machine learning models map realistic attack chains, showing how vulnerabilities could be exploited. Interactive diagrams make complex security findings understandable for any stakeholder.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Intelligent Remediation</h3>
+                        <p>AI ranks findings by actual risk to your business, providing clear, prioritized remediation guidance. Focus on what matters most, fix vulnerabilities efficiently.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credibility Section -->
+    <section id="about" class="credibility-section">
+        <div class="credibility-container">
+            <div class="section-header">
+                <span class="section-tag">Founded by Security Veterans</span>
+                <h2 class="section-title">Built by Experts, For SMEs</h2>
+                <p class="section-description">
+                    CyberDiagram is led by cybersecurity professionals with deep expertise in cloud security, penetration testing, and compliance
+                </p>
+            </div>
+
+            <!-- Founder Profile -->
+            <div class="founder-profile">
+                <div class="founder-image-container">
+                    <!-- Replace the src with your actual profile image -->
+                    <img src="me.jpeg" alt="Founder Profile" class="founder-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <!-- Placeholder if image not found -->
+                    <div class="founder-image" style="display: none;">👤</div>
+                </div>
+                <div class="founder-info">
+                    <h3 class="founder-name">Leo Zhao</h3>
+                    <p class="founder-title">Founder | Cloud Security Expert</p>
+                    <a href="https://www.linkedin.com/in/zhaohongri/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                        <svg class="linkedin-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <div class="credentials">
+                <div class="credential-item">
+                    <div class="credential-value">20+</div>
+                    <div class="credential-label">Years Experience</div>
+                </div>
+                <div class="credential-item">
+                    <div class="credential-value">11</div>
+                    <div class="credential-label">Years Cloud Security</div>
+                </div>
+                <div class="credential-item">
+                    <div class="credential-value">6</div>
+                    <div class="credential-label">Elite Certifications</div>
+                </div>
+            </div>
+            <div class="certifications">
+                <span class="cert-badge">OSEP</span>
+                <span class="cert-badge">OSCP</span>
+                <span class="cert-badge">GCPN</span>
+                <span class="cert-badge">CISSP</span>
+                <span class="cert-badge">CCSP</span>
+                <span class="cert-badge">CIPP/E</span>
+            </div>
+            <p style="margin-top: 2rem; color: #4B5563; font-size: 1.05rem; line-height: 1.7;">
+                Senior roles at <strong>Huawei Cloud</strong> (8 years) and <strong>Alibaba Cloud</strong> (3 years) with expertise in DDoS protection, IAM architecture, and multi-cloud compliance frameworks.
+            </p>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="final-cta-container">
+            <h2>Ready to Secure Your Cloud?</h2>
+            <p>Join our early access program and help shape the future of cloud security testing. Preferred pricing for founding customers.</p>
+            <a href="#" class="btn btn-primary">Request Early Access</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>CyberDiagram</h4>
+                <p>Making enterprise-grade cloud security accessible to every business.</p>
+                <p style="margin-top: 1rem;">Project Duration: 2025-2027</p>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <a href="#">Features</a>
+                <a href="#">Pricing</a>
+                <a href="#">Documentation</a>
+                <a href="#">Use Cases</a>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <a href="#">About</a>
+                <a href="#">Blog</a>
+                <a href="#">Careers</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <a href="#">Security Resources</a>
+                <a href="#">Compliance Guides</a>
+                <a href="#">API Documentation</a>
+                <a href="#">Support</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CyberDiagram. All rights reserved. | <a href="#" style="color: #6B7280;">Privacy Policy</a> | <a href="#" style="color: #6B7280;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Scroll Effect Script -->
+    <script>
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
