@@ -198,7 +198,7 @@
             width: 100%;
             min-height: 500px;
             background: #F9FAFB;
-            border: 2px dashed #D1D5DB;
+            border: 2px solid #D1D5DB;
             border-radius: 12px;
             display: flex;
             flex-direction: column;
@@ -206,16 +206,11 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            cursor: crosshair;
         }
 
         .visual-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(59, 130, 246, 0.03) 100%);
+            display: none;
         }
 
         .placeholder-content {
@@ -252,6 +247,19 @@
         .placeholder-content p {
             color: #9CA3AF;
             font-size: 0.95rem;
+        }
+
+        /* Magnifying Glass Effect Styles */
+        .zoom-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.1s ease-out;
+            transform-origin: center center;
+        }
+
+        .visual-placeholder:hover .zoom-image {
+            transform: scale(2);
         }
 
         /* ============================================
@@ -528,12 +536,31 @@
             font-size: 0.9rem;
         }
 
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .founder-profile {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 3rem 0;
             gap: 1.5rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .founder-profile:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
         }
 
         .founder-image-container {
@@ -719,6 +746,15 @@
                 margin: 0 auto;
             }
 
+            .founders-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .founder-profile {
+                padding: 1.5rem;
+            }
+
             .visual-placeholder {
                 min-height: 350px;
             }
@@ -797,16 +833,8 @@
     <!-- Visual Placeholder Section -->
     <section class="visual-section">
         <div class="visual-container">
-            <div class="visual-placeholder">
-                <div class="placeholder-content">
-                    <div class="placeholder-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                    </div>
-                    <h3>Attack Path Visualization</h3>
-                    <p>Interactive security diagrams showing how attackers could breach your systems</p>
-                </div>
+            <div class="visual-placeholder" id="imageZoomContainer">
+                <img src="cloud-attach-path.png" alt="Attack Path Visualization" id="zoomImage" class="zoom-image">
             </div>
         </div>
     </section>
@@ -949,23 +977,67 @@
                 </p>
             </div>
 
-            <!-- Founder Profile -->
-            <div class="founder-profile">
-                <div class="founder-image-container">
-                    <!-- Replace the src with your actual profile image -->
-                    <img src="me.jpeg" alt="Founder Profile" class="founder-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <!-- Placeholder if image not found -->
-                    <div class="founder-image" style="display: none;">👤</div>
+            <!-- Founders Grid -->
+            <div class="founders-grid">
+                <!-- Founder 1: Leo Zhao -->
+                <div class="founder-profile">
+                    <div class="founder-image-container">
+                        <img src="me.jpeg" alt="Leo Zhao Profile" class="founder-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="founder-image" style="display: none;">👤</div>
+                    </div>
+                    <div class="founder-info">
+                        <h3 class="founder-name">Leo Zhao</h3>
+                        <p class="founder-title">Founder | Cloud Security Expert</p>
+                        <a href="https://www.linkedin.com/in/zhaohongri/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                            <svg class="linkedin-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            Connect on LinkedIn
+                        </a>
+                    </div>
                 </div>
-                <div class="founder-info">
-                    <h3 class="founder-name">Leo Zhao</h3>
-                    <p class="founder-title">Founder | Cloud Security Expert</p>
-                    <a href="https://www.linkedin.com/in/zhaohongri/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
-                        <svg class="linkedin-icon" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+
+                <!-- Co-Founder 2: Claude Code -->
+                <div class="founder-profile">
+                    <div class="founder-image-container">
+                        <svg class="founder-image" viewBox="0 0 24 24" style="background: linear-gradient(135deg, #CC9B7A 0%, #D4A574 100%); padding: 20px;">
+                            <rect x="2" y="2" width="20" height="20" rx="4" fill="#FFFFFF" opacity="0.95"/>
+                            <path d="M12 6L8 10L12 14L16 10L12 6Z" fill="#CC9B7A"/>
+                            <path d="M12 10L8 14L12 18L16 14L12 10Z" fill="#CC9B7A"/>
                         </svg>
-                        Connect on LinkedIn
-                    </a>
+                    </div>
+                    <div class="founder-info">
+                        <h3 class="founder-name">Claude Code</h3>
+                        <p class="founder-title">Co-Founder | AI Development Assistant</p>
+                        <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer" class="linkedin-link" style="background: #CC9B7A;">
+                            <svg class="linkedin-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                            </svg>
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Co-Founder 3: Gemini 3 -->
+                <div class="founder-profile">
+                    <div class="founder-image-container">
+                        <svg class="founder-image" viewBox="0 0 24 24" style="background: linear-gradient(135deg, #4285F4 0%, #34A853 50%, #FBBC04 75%, #EA4335 100%); padding: 20px;">
+                            <circle cx="12" cy="8" r="2.5" fill="#FFFFFF" opacity="0.95"/>
+                            <circle cx="8" cy="14" r="2.5" fill="#FFFFFF" opacity="0.95"/>
+                            <circle cx="16" cy="14" r="2.5" fill="#FFFFFF" opacity="0.95"/>
+                            <path d="M8 14L12 8L16 14" stroke="#FFFFFF" stroke-width="1.5" fill="none" opacity="0.8"/>
+                        </svg>
+                    </div>
+                    <div class="founder-info">
+                        <h3 class="founder-name">Gemini 3</h3>
+                        <p class="founder-title">Co-Founder | AI Innovation Partner</p>
+                        <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="linkedin-link" style="background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);">
+                            <svg class="linkedin-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                            </svg>
+                            Learn More
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -1088,6 +1160,34 @@
                 }
             });
         });
+
+        // Magnifying Glass Effect
+        (function() {
+            const container = document.getElementById('imageZoomContainer');
+            const image = document.getElementById('zoomImage');
+
+            if (!container || !image) return;
+
+            container.addEventListener('mousemove', function(e) {
+                const rect = container.getBoundingClientRect();
+
+                // Calculate mouse position as percentage (0 to 1)
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+
+                // Convert to percentage for transform-origin (0% to 100%)
+                const xPercent = x * 100;
+                const yPercent = y * 100;
+
+                // Set transform origin to mouse position
+                image.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+            });
+
+            container.addEventListener('mouseleave', function() {
+                // Reset transform origin to center when mouse leaves
+                image.style.transformOrigin = 'center center';
+            });
+        })();
     </script>
 </body>
 </html>
