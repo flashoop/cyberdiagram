@@ -478,6 +478,94 @@
         }
 
         /* ============================================
+           COMPARISON TABLE SECTION
+           ============================================ */
+        .comparison-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+        }
+
+        .comparison-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .table-wrapper {
+            margin-top: 3rem;
+            overflow-x: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            font-size: 1rem;
+        }
+
+        .comparison-table thead {
+            background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+            color: white;
+        }
+
+        .comparison-table th {
+            padding: 1.5rem 2rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-bottom: 3px solid #1E40AF;
+        }
+
+        .comparison-table th:first-child {
+            border-top-left-radius: 12px;
+        }
+
+        .comparison-table th:last-child {
+            border-top-right-radius: 12px;
+        }
+
+        .comparison-table tbody tr {
+            border-bottom: 1px solid #E5E7EB;
+            transition: background-color 0.3s ease;
+        }
+
+        .comparison-table tbody tr:hover {
+            background-color: #F9FAFB;
+        }
+
+        .comparison-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-table td {
+            padding: 1.5rem 2rem;
+            color: #4B5563;
+            font-size: 1.05rem;
+        }
+
+        .comparison-table .feature-name {
+            font-weight: 600;
+            color: #111827;
+            font-size: 1.1rem;
+        }
+
+        .comparison-table .highlight-column {
+            background-color: #EFF6FF;
+            color: #2563EB;
+            font-weight: 500;
+        }
+
+        .comparison-table tbody tr:hover .highlight-column {
+            background-color: #DBEAFE;
+        }
+
+        .comparison-table .highlight-column strong {
+            color: #1E40AF;
+            font-weight: 700;
+        }
+
+        /* ============================================
            FOUNDER CREDIBILITY SECTION
            ============================================ */
         .credibility-section {
@@ -772,6 +860,20 @@
             .founder-title {
                 font-size: 1rem;
             }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .comparison-table .feature-name {
+                font-size: 1rem;
+            }
+
+            .table-wrapper {
+                margin-top: 2rem;
+            }
         }
 
         /* ============================================
@@ -962,6 +1064,52 @@
                         <p>AI ranks findings by actual risk to your business, providing clear, prioritized remediation guidance. Focus on what matters most, fix vulnerabilities efficiently.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table Section -->
+    <section class="comparison-section">
+        <div class="comparison-container">
+            <div class="section-header">
+                <span class="section-tag">Why Choose Us</span>
+                <h2 class="section-title">CyberDiagram vs Traditional Pentesting</h2>
+                <p class="section-description">
+                    See how AI-powered continuous security outperforms costly one-time assessments
+                </p>
+            </div>
+            <div class="table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Manual Pentesting</th>
+                            <th class="highlight-column">CyberDiagram</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="feature-name">Cost</td>
+                            <td>$15,000 - $40,000 / test</td>
+                            <td class="highlight-column"><strong>$500 / test</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Speed</td>
+                            <td>2-4 Weeks</td>
+                            <td class="highlight-column"><strong>Instant & Continuous</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Visibility</td>
+                            <td>Static 50-page PDF</td>
+                            <td class="highlight-column"><strong>Interactive Attack Map</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Market</td>
+                            <td>Top 1% Enterprises</td>
+                            <td class="highlight-column"><strong>The 99% of SMBs</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
