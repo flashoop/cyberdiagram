@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberDiagram - AI-Powered Cloud Security Testing</title>
+    <title>CyberDiagram - Open Source AI-Powered Cloud Security Testing</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* ============================================
@@ -16,10 +16,10 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'SF Mono', 'Fira Code', monospace, sans-serif;
             line-height: 1.6;
-            color: #1F2937;
-            background-color: #FFFFFF;
+            color: #E5E7EB;
+            background-color: #0f1117;
             font-size: 16px;
         }
 
@@ -30,15 +30,16 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(15, 17, 23, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid #E5E7EB;
+            border-bottom: 1px solid #1e293b;
             z-index: 1000;
             transition: all 0.3s ease;
         }
 
         nav.scrolled {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            border-bottom-color: #6c7ee1;
         }
 
         .nav-container {
@@ -48,13 +49,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            height: 56px;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #2563EB;
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -64,7 +67,7 @@
         .logo-icon {
             width: 32px;
             height: 32px;
-            background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
             border-radius: 6px;
             display: flex;
             align-items: center;
@@ -72,17 +75,24 @@
             color: white;
             font-weight: 700;
             font-size: 18px;
+            animation: atomicRotate 12s linear infinite;
+        }
+
+        @keyframes atomicRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #4B5563;
+            color: #8b90a5;
             font-weight: 500;
             font-size: 0.95rem;
             transition: color 0.3s ease;
@@ -90,7 +100,7 @@
         }
 
         .nav-links a:hover {
-            color: #2563EB;
+            color: #6c7ee1;
         }
 
         .nav-links a.active::after {
@@ -100,22 +110,71 @@
             left: 0;
             right: 0;
             height: 2px;
-            background: #2563EB;
+            background: #6c7ee1;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(108, 126, 225, 0.1);
+            border: 1px solid #6c7ee1;
+            border-radius: 6px;
+            color: #6c7ee1 !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .github-link:hover {
+            background: rgba(108, 126, 225, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .github-icon {
+            width: 20px;
+            height: 20px;
         }
 
         /* ============================================
            HERO SECTION
            ============================================ */
         .hero {
-            margin-top: 70px;
-            padding: 5rem 2rem 3rem;
-            background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+            margin-top: 56px;
+            padding: 6rem 2rem 4rem;
+            background: radial-gradient(ellipse at top, rgba(108, 126, 225, 0.15) 0%, transparent 50%),
+                        linear-gradient(180deg, #0f1117 0%, #020617 100%);
             text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, #6c7ee1 50%, transparent 100%);
         }
 
         .hero-container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
+        }
+
+        .open-source-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(108, 126, 225, 0.1);
+            border: 1px solid #6c7ee1;
+            border-radius: 20px;
+            color: #6c7ee1;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
         }
 
         .hero h1 {
@@ -123,21 +182,60 @@
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            color: #111827;
+            background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #4fc3f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             letter-spacing: -0.02em;
         }
 
         .hero h1 .highlight {
-            color: #2563EB;
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             position: relative;
         }
 
         .hero .subheadline {
             font-size: 1.25rem;
-            color: #6B7280;
+            color: #8b90a5;
             margin-bottom: 2.5rem;
             line-height: 1.7;
             font-weight: 400;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #E5E7EB;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #6c7ee1;
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            color: #6c7ee1;
         }
 
         .cta-buttons {
@@ -154,112 +252,68 @@
             font-size: 1rem;
             text-decoration: none;
             transition: all 0.3s ease;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             border: 2px solid transparent;
         }
 
         .btn-primary {
-            background: #2563EB;
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
             color: white;
         }
 
         .btn-primary:hover {
-            background: #1E40AF;
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 10px 25px rgba(108, 126, 225, 0.4);
         }
 
         .btn-secondary {
-            background: white;
-            color: #2563EB;
-            border-color: #E5E7EB;
+            background: rgba(30, 41, 59, 0.8);
+            color: #6c7ee1;
+            border-color: #1e293b;
         }
 
         .btn-secondary:hover {
-            border-color: #2563EB;
+            border-color: #6c7ee1;
+            background: rgba(30, 41, 59, 1);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
         /* ============================================
-           VISUAL PLACEHOLDER (Attack Diagram)
+           SCREENSHOT SECTION
            ============================================ */
-        .visual-section {
+        .screenshot-section {
             padding: 4rem 2rem;
-            background: white;
+            background: #020617;
+            border-top: 1px solid #1e293b;
         }
 
-        .visual-container {
+        .screenshot-container {
             max-width: 1280px;
             margin: 0 auto;
         }
 
-        .visual-placeholder {
+        .screenshot-wrapper {
             width: 100%;
-            min-height: 500px;
-            background: #F9FAFB;
-            border: 2px solid #D1D5DB;
             border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
             overflow: hidden;
-            cursor: crosshair;
+            border: 2px solid #1e293b;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
         }
 
-        .visual-placeholder::before {
-            display: none;
+        .screenshot-wrapper:hover {
+            border-color: #6c7ee1;
+            box-shadow: 0 15px 50px rgba(108, 126, 225, 0.3);
+            transform: translateY(-5px);
         }
 
-        .placeholder-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
-
-        .placeholder-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .placeholder-icon svg {
-            width: 40px;
-            height: 40px;
-            color: #2563EB;
-        }
-
-        .placeholder-content h3 {
-            font-size: 1.5rem;
-            color: #4B5563;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .placeholder-content p {
-            color: #9CA3AF;
-            font-size: 0.95rem;
-        }
-
-        /* Magnifying Glass Effect Styles */
-        .zoom-image {
+        .screenshot-image {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.1s ease-out;
-            transform-origin: center center;
-        }
-
-        .visual-placeholder:hover .zoom-image {
-            transform: scale(2);
         }
 
         /* ============================================
@@ -267,7 +321,8 @@
            ============================================ */
         .problem-section {
             padding: 5rem 2rem;
-            background: white;
+            background: #0f1117;
+            border-top: 1px solid #1e293b;
         }
 
         .problem-container {
@@ -283,8 +338,9 @@
         .section-tag {
             display: inline-block;
             padding: 0.5rem 1rem;
-            background: #EFF6FF;
-            color: #2563EB;
+            background: rgba(108, 126, 225, 0.1);
+            color: #6c7ee1;
+            border: 1px solid rgba(108, 126, 225, 0.3);
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
@@ -296,14 +352,16 @@
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #111827;
+            background: linear-gradient(135deg, #ffffff 0%, #8b90a5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 1rem;
             line-height: 1.2;
         }
 
         .section-description {
             font-size: 1.125rem;
-            color: #6B7280;
+            color: #8b90a5;
             max-width: 700px;
             margin: 0 auto;
             line-height: 1.7;
@@ -318,16 +376,16 @@
 
         .problem-card {
             padding: 2rem;
-            background: #F9FAFB;
+            background: #0f172a;
             border-radius: 12px;
-            border: 1px solid #E5E7EB;
+            border: 1px solid #1e293b;
             transition: all 0.3s ease;
         }
 
         .problem-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border-color: #2563EB;
+            box-shadow: 0 10px 30px rgba(108, 126, 225, 0.2);
+            border-color: #6c7ee1;
         }
 
         .problem-icon {
@@ -350,12 +408,12 @@
         .problem-card h3 {
             font-size: 1.25rem;
             font-weight: 600;
-            color: #111827;
+            color: #E5E7EB;
             margin-bottom: 0.75rem;
         }
 
         .problem-card p {
-            color: #6B7280;
+            color: #8b90a5;
             line-height: 1.6;
         }
 
@@ -364,7 +422,8 @@
            ============================================ */
         .solution-section {
             padding: 5rem 2rem;
-            background: linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%);
+            background: linear-gradient(180deg, #020617 0%, #0f1117 100%);
+            border-top: 1px solid #1e293b;
         }
 
         .solution-container {
@@ -382,22 +441,22 @@
         .feature-card {
             text-align: center;
             padding: 2.5rem 2rem;
-            background: white;
+            background: #0f172a;
             border-radius: 12px;
-            border: 1px solid #E5E7EB;
+            border: 1px solid #1e293b;
             transition: all 0.3s ease;
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.1);
-            border-color: #2563EB;
+            box-shadow: 0 15px 40px rgba(108, 126, 225, 0.2);
+            border-color: #6c7ee1;
         }
 
         .feature-icon {
             width: 64px;
             height: 64px;
-            background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -414,12 +473,12 @@
         .feature-card h3 {
             font-size: 1.5rem;
             font-weight: 600;
-            color: #111827;
+            color: #E5E7EB;
             margin-bottom: 1rem;
         }
 
         .feature-card p {
-            color: #6B7280;
+            color: #8b90a5;
             line-height: 1.7;
             font-size: 1rem;
         }
@@ -429,7 +488,8 @@
            ============================================ */
         .how-it-works {
             padding: 5rem 2rem;
-            background: white;
+            background: #0f1117;
+            border-top: 1px solid #1e293b;
         }
 
         .how-container {
@@ -453,7 +513,7 @@
             flex-shrink: 0;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -461,18 +521,18 @@
             color: white;
             font-size: 1.5rem;
             font-weight: 700;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 4px 12px rgba(108, 126, 225, 0.4);
         }
 
         .step-content h3 {
             font-size: 1.5rem;
             font-weight: 600;
-            color: #111827;
+            color: #E5E7EB;
             margin-bottom: 0.75rem;
         }
 
         .step-content p {
-            color: #6B7280;
+            color: #8b90a5;
             line-height: 1.7;
             font-size: 1.05rem;
         }
@@ -482,7 +542,8 @@
            ============================================ */
         .comparison-section {
             padding: 5rem 2rem;
-            background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+            background: linear-gradient(180deg, #020617 0%, #0f1117 100%);
+            border-top: 1px solid #1e293b;
         }
 
         .comparison-container {
@@ -494,18 +555,18 @@
             margin-top: 3rem;
             overflow-x: auto;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
+            background: #0f172a;
             font-size: 1rem;
         }
 
         .comparison-table thead {
-            background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
             color: white;
         }
 
@@ -514,7 +575,7 @@
             text-align: left;
             font-weight: 600;
             font-size: 1.1rem;
-            border-bottom: 3px solid #1E40AF;
+            border-bottom: 3px solid #4fc3f7;
         }
 
         .comparison-table th:first-child {
@@ -526,12 +587,12 @@
         }
 
         .comparison-table tbody tr {
-            border-bottom: 1px solid #E5E7EB;
+            border-bottom: 1px solid #1e293b;
             transition: background-color 0.3s ease;
         }
 
         .comparison-table tbody tr:hover {
-            background-color: #F9FAFB;
+            background-color: rgba(108, 126, 225, 0.05);
         }
 
         .comparison-table tbody tr:last-child {
@@ -540,28 +601,28 @@
 
         .comparison-table td {
             padding: 1.5rem 2rem;
-            color: #4B5563;
+            color: #8b90a5;
             font-size: 1.05rem;
         }
 
         .comparison-table .feature-name {
             font-weight: 600;
-            color: #111827;
+            color: #E5E7EB;
             font-size: 1.1rem;
         }
 
         .comparison-table .highlight-column {
-            background-color: #EFF6FF;
-            color: #2563EB;
+            background-color: rgba(108, 126, 225, 0.1);
+            color: #6c7ee1;
             font-weight: 500;
         }
 
         .comparison-table tbody tr:hover .highlight-column {
-            background-color: #DBEAFE;
+            background-color: rgba(108, 126, 225, 0.15);
         }
 
         .comparison-table .highlight-column strong {
-            color: #1E40AF;
+            color: #4fc3f7;
             font-weight: 700;
         }
 
@@ -570,7 +631,9 @@
            ============================================ */
         .credibility-section {
             padding: 5rem 2rem;
-            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            background: radial-gradient(ellipse at center, rgba(108, 126, 225, 0.1) 0%, transparent 70%),
+                        linear-gradient(135deg, #0f1117 0%, #020617 100%);
+            border-top: 1px solid #1e293b;
         }
 
         .credibility-container {
@@ -588,20 +651,29 @@
 
         .credential-item {
             padding: 1.5rem;
-            background: white;
+            background: #0f172a;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #1e293b;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .credential-item:hover {
+            border-color: #6c7ee1;
+            transform: translateY(-3px);
         }
 
         .credential-value {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #2563EB;
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
         }
 
         .credential-label {
-            color: #6B7280;
+            color: #8b90a5;
             font-weight: 500;
             font-size: 0.95rem;
         }
@@ -616,12 +688,18 @@
 
         .cert-badge {
             padding: 0.5rem 1rem;
-            background: white;
-            border: 2px solid #2563EB;
+            background: rgba(108, 126, 225, 0.1);
+            border: 2px solid #6c7ee1;
             border-radius: 20px;
-            color: #2563EB;
+            color: #6c7ee1;
             font-weight: 600;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .cert-badge:hover {
+            background: rgba(108, 126, 225, 0.2);
+            transform: translateY(-2px);
         }
 
         .founders-grid {
@@ -640,15 +718,17 @@
             align-items: center;
             gap: 1.5rem;
             padding: 2rem;
-            background: white;
+            background: #0f172a;
+            border: 1px solid #1e293b;
             border-radius: 16px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
 
         .founder-profile:hover {
             transform: translateY(-8px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 8px 24px rgba(108, 126, 225, 0.3);
+            border-color: #6c7ee1;
         }
 
         .founder-image-container {
@@ -662,14 +742,14 @@
             height: 160px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            background: linear-gradient(135deg, #E5E7EB 0%, #D1D5DB 100%);
+            border: 4px solid #1e293b;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            color: #6B7280;
+            color: #8b90a5;
         }
 
         .founder-info {
@@ -679,13 +759,13 @@
         .founder-name {
             font-size: 1.75rem;
             font-weight: 700;
-            color: #111827;
+            color: #E5E7EB;
             margin-bottom: 0.5rem;
         }
 
         .founder-title {
             font-size: 1.1rem;
-            color: #6B7280;
+            color: #8b90a5;
             margin-bottom: 1rem;
         }
 
@@ -719,9 +799,10 @@
            ============================================ */
         .final-cta {
             padding: 5rem 2rem;
-            background: linear-gradient(135deg, #1E40AF 0%, #2563EB 100%);
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
             color: white;
             text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .final-cta-container {
@@ -745,7 +826,7 @@
 
         .final-cta .btn-primary {
             background: white;
-            color: #2563EB;
+            color: #6c7ee1;
         }
 
         .final-cta .btn-primary:hover {
@@ -758,8 +839,9 @@
            ============================================ */
         footer {
             padding: 3rem 2rem 2rem;
-            background: #111827;
-            color: #9CA3AF;
+            background: #020617;
+            color: #8b90a5;
+            border-top: 1px solid #1e293b;
         }
 
         .footer-container {
@@ -771,7 +853,7 @@
         }
 
         .footer-section h4 {
-            color: white;
+            color: #E5E7EB;
             font-weight: 600;
             margin-bottom: 1rem;
             font-size: 1.1rem;
@@ -779,22 +861,31 @@
 
         .footer-section p,
         .footer-section a {
-            color: #9CA3AF;
+            color: #8b90a5;
             text-decoration: none;
             line-height: 2;
             display: block;
         }
 
         .footer-section a:hover {
-            color: #2563EB;
+            color: #6c7ee1;
         }
 
         .footer-bottom {
-            border-top: 1px solid #374151;
+            border-top: 1px solid #1e293b;
             margin-top: 3rem;
             padding-top: 2rem;
             text-align: center;
-            color: #6B7280;
+            color: #8b90a5;
+        }
+
+        .footer-bottom a {
+            color: #8b90a5;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: #6c7ee1;
         }
 
         /* ============================================
@@ -814,7 +905,28 @@
             }
 
             .nav-links {
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .github-link {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .github-icon {
+                width: 16px;
+                height: 16px;
+            }
+
+            .contact-info {
+                flex-direction: column;
                 gap: 1rem;
+                padding: 1rem;
             }
 
             .cta-buttons {
@@ -841,10 +953,6 @@
 
             .founder-profile {
                 padding: 1.5rem;
-            }
-
-            .visual-placeholder {
-                min-height: 350px;
             }
 
             .founder-image-container,
@@ -914,6 +1022,14 @@
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#product">Product</a></li>
                 <li><a href="#about">About</a></li>
+                <li>
+                    <a href="https://github.com/flashoop/mvp" target="_blank" rel="noopener noreferrer" class="github-link">
+                        <svg class="github-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        Star on GitHub
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -921,22 +1037,45 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-container fade-in-up">
+            <span class="open-source-badge">🚀 Open Source Project</span>
             <h1>AI Penetration Testing for SMBs.</br>At <span class="highlight">1/10th</span> the cost of a consultant.</h1>
             <p class="subheadline">
-               CyberDiagram uses AI to continuously map attack paths and validate your cloud security posture.No $20k price tags. Just continuous protection for your Cloud environments.
+               CyberDiagram uses AI to continuously map attack paths and validate your cloud security posture. No $20k price tags. Just continuous protection for your Cloud environments.
             </p>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <a href="mailto:flashoop@gmail.com" class="contact-item">
+                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    flashoop@gmail.com
+                </a>
+                <a href="https://discord.com/users/flashoop" target="_blank" rel="noopener noreferrer" class="contact-item">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                    Discord: flashoop
+                </a>
+            </div>
+
             <div class="cta-buttons">
-                <a href="#" class="btn btn-primary">Request Early Access</a>
-                <a href="#" class="btn btn-secondary">See Demo</a>
+                <a href="https://github.com/flashoop/mvp" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <svg style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    View on GitHub
+                </a>
+                <a href="#product" class="btn btn-secondary">Explore Features</a>
             </div>
         </div>
     </section>
 
-    <!-- Visual Placeholder Section -->
-    <section class="visual-section">
-        <div class="visual-container">
-            <div class="visual-placeholder" id="imageZoomContainer">
-                <img src="cloud-attach-path.png" alt="Attack Path Visualization" id="zoomImage" class="zoom-image">
+    <!-- Screenshot Section -->
+    <section class="screenshot-section">
+        <div class="screenshot-container">
+            <div class="screenshot-wrapper">
+                <img src="Screeshot.png" alt="CyberDiagram Screenshot" class="screenshot-image">
             </div>
         </div>
     </section>
@@ -1167,8 +1306,8 @@
                 <span class="cert-badge">CCSP</span>
                 <span class="cert-badge">CIPP/E</span>
             </div>
-            <p style="margin-top: 2rem; color: #4B5563; font-size: 1.05rem; line-height: 1.7;">
-                Senior roles at <strong>Huawei Cloud</strong> (8 years) and <strong>Alibaba Cloud</strong> (3 years) with expertise in DDoS protection, IAM architecture, and multi-cloud compliance frameworks.
+            <p style="margin-top: 2rem; color: #8b90a5; font-size: 1.05rem; line-height: 1.7;">
+                Senior roles at <strong style="color: #E5E7EB;">Huawei Cloud</strong> (8 years) and <strong style="color: #E5E7EB;">Alibaba Cloud</strong> (3 years) with expertise in DDoS protection, IAM architecture, and multi-cloud compliance frameworks.
             </p>
         </div>
     </section>
@@ -1176,9 +1315,22 @@
     <!-- Final CTA Section -->
     <section class="final-cta">
         <div class="final-cta-container">
-            <h2>Ready to Secure Your Cloud?</h2>
-            <p>Join our early access program and help shape the future of cloud security testing. Preferred pricing for founding customers.</p>
-            <a href="#" class="btn btn-primary">Request Early Access</a>
+            <h2>Join the Open Source Revolution</h2>
+            <p>Contribute to the future of cloud security testing. Star the project, submit issues, or contribute code to help make enterprise-grade security accessible to everyone.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/flashoop/mvp" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <svg style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    Contribute on GitHub
+                </a>
+                <a href="mailto:flashoop@gmail.com" class="btn btn-secondary">
+                    <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    Get in Touch
+                </a>
+            </div>
         </div>
     </section>
 
@@ -1187,33 +1339,40 @@
         <div class="footer-container">
             <div class="footer-section">
                 <h4>CyberDiagram</h4>
-                <p>Making enterprise-grade cloud security accessible to every business.</p>
+                <p>Open-source AI-powered cloud security testing for everyone.</p>
                 <p style="margin-top: 1rem;">Project Duration: 2025-2027</p>
+                <p style="margin-top: 1rem;">
+                    <a href="https://github.com/flashoop/mvp" target="_blank" rel="noopener noreferrer" style="color: #6c7ee1; display: inline-flex; align-items: center; gap: 0.5rem;">
+                        <svg style="width: 16px; height: 16px;" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        GitHub Repository
+                    </a>
+                </p>
             </div>
             <div class="footer-section">
-                <h4>Product</h4>
-                <a href="#">Features</a>
-                <a href="#">Pricing</a>
-                <a href="#">Documentation</a>
-                <a href="#">Use Cases</a>
-            </div>
-            <div class="footer-section">
-                <h4>Company</h4>
-                <a href="#">About</a>
-                <a href="#">Blog</a>
-                <a href="#">Careers</a>
-                <a href="#">Contact</a>
+                <h4>Contact</h4>
+                <a href="mailto:flashoop@gmail.com">flashoop@gmail.com</a>
+                <a href="https://discord.com/users/flashoop" target="_blank" rel="noopener noreferrer">Discord: flashoop</a>
+                <a href="https://www.linkedin.com/in/zhaohongri/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
             </div>
             <div class="footer-section">
                 <h4>Resources</h4>
-                <a href="#">Security Resources</a>
-                <a href="#">Compliance Guides</a>
+                <a href="https://github.com/flashoop/mvp" target="_blank" rel="noopener noreferrer">Documentation</a>
+                <a href="https://github.com/flashoop/mvp/issues" target="_blank" rel="noopener noreferrer">Report Issues</a>
+                <a href="https://github.com/flashoop/mvp/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contributing Guide</a>
                 <a href="#">API Documentation</a>
-                <a href="#">Support</a>
+            </div>
+            <div class="footer-section">
+                <h4>Community</h4>
+                <a href="https://github.com/flashoop/mvp/discussions" target="_blank" rel="noopener noreferrer">Discussions</a>
+                <a href="https://github.com/flashoop/mvp/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">License</a>
+                <a href="#">Blog</a>
+                <a href="#">Roadmap</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 CyberDiagram. All rights reserved. | <a href="#" style="color: #6B7280;">Privacy Policy</a> | <a href="#" style="color: #6B7280;">Terms of Service</a></p>
+            <p>&copy; 2025 CyberDiagram Open Source Project. Licensed under Apache 2.0 | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
         </div>
     </footer>
 
@@ -1265,33 +1424,6 @@
             });
         });
 
-        // Magnifying Glass Effect
-        (function() {
-            const container = document.getElementById('imageZoomContainer');
-            const image = document.getElementById('zoomImage');
-
-            if (!container || !image) return;
-
-            container.addEventListener('mousemove', function(e) {
-                const rect = container.getBoundingClientRect();
-
-                // Calculate mouse position as percentage (0 to 1)
-                const x = (e.clientX - rect.left) / rect.width;
-                const y = (e.clientY - rect.top) / rect.height;
-
-                // Convert to percentage for transform-origin (0% to 100%)
-                const xPercent = x * 100;
-                const yPercent = y * 100;
-
-                // Set transform origin to mouse position
-                image.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-            });
-
-            container.addEventListener('mouseleave', function() {
-                // Reset transform origin to center when mouse leaves
-                image.style.transformOrigin = 'center center';
-            });
-        })();
     </script>
 </body>
 </html>
