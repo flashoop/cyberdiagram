@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund Policy - CyberDiagram</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #E5E7EB;
+            background-color: #0f1117;
+            font-size: 16px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1e293b;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 56px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #8b90a5;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: #6c7ee1; }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(108, 126, 225, 0.1);
+            border: 1px solid #6c7ee1;
+            border-radius: 6px;
+            color: #6c7ee1 !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .github-link:hover { background: rgba(108, 126, 225, 0.2); }
+        .github-icon { width: 20px; height: 20px; }
+
+        .page-header {
+            margin-top: 56px;
+            padding: 4rem 2rem 2rem;
+            background: radial-gradient(ellipse at top, rgba(108, 126, 225, 0.1) 0%, transparent 50%),
+                        linear-gradient(180deg, #0f1117 0%, #020617 100%);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #4fc3f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header .last-updated {
+            color: #8b90a5;
+            font-size: 0.95rem;
+        }
+
+        .legal-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
+        }
+
+        .legal-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #E5E7EB;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .legal-content h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #E5E7EB;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .legal-content p {
+            color: #8b90a5;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .legal-content ul, .legal-content ol {
+            color: #8b90a5;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .legal-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        .legal-content a {
+            color: #6c7ee1;
+            text-decoration: none;
+        }
+
+        .legal-content a:hover { text-decoration: underline; }
+        .legal-content strong { color: #E5E7EB; }
+
+        .highlight-box {
+            background: rgba(108, 126, 225, 0.08);
+            border: 1px solid rgba(108, 126, 225, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        footer {
+            padding: 3rem 2rem 2rem;
+            background: #020617;
+            color: #8b90a5;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            color: #E5E7EB;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #8b90a5;
+            text-decoration: none;
+            line-height: 2;
+            display: block;
+        }
+
+        .footer-section a:hover { color: #6c7ee1; }
+
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        .footer-bottom a { color: #8b90a5; text-decoration: none; }
+        .footer-bottom a:hover { color: #6c7ee1; }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .nav-links { gap: 0.5rem; flex-wrap: wrap; }
+            .nav-container { padding: 0 1rem; }
+            .github-link { padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+            .github-icon { width: 16px; height: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">CD</div>
+                CyberDiagram
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li>
+                    <a href="https://github.com/flashoop/mvp" target="_blank" rel="noopener noreferrer" class="github-link">
+                        <svg class="github-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        Star on GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Refund Policy</h1>
+        <p class="last-updated">Last updated: February 11, 2026</p>
+    </section>
+
+    <div class="legal-content">
+        <p>At CyberDiagram, we want you to be satisfied with our service. This Refund Policy outlines the terms under which refunds may be issued for our paid subscription plans.</p>
+
+        <div class="highlight-box">
+            <p><strong>Summary:</strong> Monthly subscriptions can be cancelled anytime. We offer a full refund within 14 days of your first paid subscription if you are not satisfied. After 14 days, no prorated refunds are provided, but your access continues until the end of the billing period.</p>
+        </div>
+
+        <h2>1. Subscription Plans</h2>
+        <p>CyberDiagram offers the following subscription plans:</p>
+        <ul>
+            <li><strong>Basic (Free):</strong> No payment required. No refund applicable.</li>
+            <li><strong>Enterprise ($499/month):</strong> Monthly recurring subscription.</li>
+            <li><strong>Flagship ($999/month):</strong> Monthly recurring subscription.</li>
+        </ul>
+        <p>All paid subscriptions are billed monthly in advance in US Dollars (USD).</p>
+
+        <h2>2. 14-Day Satisfaction Guarantee</h2>
+        <p>If you are a <strong>first-time subscriber</strong> to a paid plan and are not satisfied with the Service, you may request a full refund within <strong>14 calendar days</strong> of your initial subscription payment. This guarantee applies only once per customer and only to the first billing cycle.</p>
+        <p>To request a refund under this guarantee:</p>
+        <ol>
+            <li>Email us at <a href="mailto:flashoop@gmail.com">flashoop@gmail.com</a> within 14 days of your first payment</li>
+            <li>Include your account email and the reason for your refund request</li>
+            <li>We will process your refund within 5-10 business days</li>
+        </ol>
+
+        <h2>3. Cancellation</h2>
+        <p>You may cancel your subscription at any time by:</p>
+        <ul>
+            <li>Using the cancellation option in your account settings</li>
+            <li>Emailing us at <a href="mailto:flashoop@gmail.com">flashoop@gmail.com</a></li>
+        </ul>
+        <p>Upon cancellation:</p>
+        <ul>
+            <li>Your subscription remains active until the end of the current billing period</li>
+            <li>You retain full access to the Service during this remaining period</li>
+            <li>No further charges will be made after the current period ends</li>
+            <li>No prorated refunds are issued for unused portions of a billing period</li>
+        </ul>
+
+        <h2>4. Refund Eligibility</h2>
+
+        <h3>4.1 Eligible for Refund</h3>
+        <ul>
+            <li>First-time subscribers within the 14-day satisfaction guarantee period</li>
+            <li>Service outages exceeding 48 continuous hours during a billing period (prorated credit)</li>
+            <li>Duplicate or erroneous charges caused by billing system errors</li>
+            <li>Charges made after a confirmed cancellation request</li>
+        </ul>
+
+        <h3>4.2 Not Eligible for Refund</h3>
+        <ul>
+            <li>Requests made after 14 days of the initial subscription (for first-time guarantee)</li>
+            <li>Partial month usage after the 14-day guarantee period</li>
+            <li>Downgrade from a higher-tier plan to a lower-tier plan mid-cycle</li>
+            <li>Account suspension or termination due to violation of our <a href="terms.html">Terms of Service</a></li>
+            <li>Dissatisfaction with scan results or vulnerability findings (the Service provides assessments, not guaranteed outcomes)</li>
+        </ul>
+
+        <h2>5. Plan Changes</h2>
+
+        <h3>5.1 Upgrading</h3>
+        <p>When upgrading to a higher-tier plan, you will be charged the prorated difference for the remainder of the current billing period. The new plan rate applies from the next billing cycle.</p>
+
+        <h3>5.2 Downgrading</h3>
+        <p>When downgrading to a lower-tier plan, the change takes effect at the start of the next billing cycle. No refund or credit is issued for the difference during the current period.</p>
+
+        <h2>6. Service Credits</h2>
+        <p>In cases where the Service experiences significant downtime (more than 48 continuous hours), we may issue service credits at our discretion. Service credits:</p>
+        <ul>
+            <li>Are applied to future billing cycles</li>
+            <li>Cannot be redeemed for cash</li>
+            <li>Expire if not used within 12 months</li>
+            <li>Are calculated based on the prorated daily cost of your subscription</li>
+        </ul>
+
+        <h2>7. How Refunds Are Processed</h2>
+        <ul>
+            <li>Approved refunds are returned to the original payment method</li>
+            <li>Processing time is 5-10 business days, depending on your payment provider</li>
+            <li>You will receive an email confirmation when the refund has been initiated</li>
+        </ul>
+
+        <h2>8. Disputes</h2>
+        <p>If you believe you have been incorrectly charged or your refund request was denied in error, please contact us at <a href="mailto:flashoop@gmail.com">flashoop@gmail.com</a>. We will review your case and respond within 5 business days.</p>
+        <p>We encourage you to contact us directly before initiating a chargeback with your payment provider, as we are committed to resolving billing issues promptly and fairly.</p>
+
+        <h2>9. Changes to This Policy</h2>
+        <p>We may update this Refund Policy from time to time. Changes will be posted on this page with an updated "Last updated" date. Material changes will be communicated via email at least 30 days in advance.</p>
+
+        <h2>10. Contact Us</h2>
+        <p>For refund requests or billing questions, contact us at:</p>
+        <ul>
+            <li>Email: <a href="mailto:flashoop@gmail.com">flashoop@gmail.com</a></li>
+            <li>Discord: flashoop</li>
+            <li>Website: <a href="https://cyberdiagram.com">cyberdiagram.com</a></li>
+        </ul>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>CyberDiagram</h4>
+                <p>AI-powered cloud penetration testing platform for SMEs in Southeast Asia.</p>
+                <p style="margin-top: 1rem;">
+                    <a href="https://github.com/flashoop/mvp" target="_blank" rel="noopener noreferrer">Open Source on GitHub</a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <a href="mailto:flashoop@gmail.com">flashoop@gmail.com</a>
+                <a href="https://discord.com/users/flashoop" target="_blank" rel="noopener noreferrer">Discord: flashoop</a>
+                <a href="https://www.linkedin.com/in/zhaohongri/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <a href="index.html">Home</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="https://github.com/flashoop/mvp" target="_blank" rel="noopener noreferrer">Documentation</a>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <a href="terms.html">Terms of Service</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="refund.html">Refund Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CyberDiagram. Licensed under Apache 2.0 | <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a> | <a href="refund.html">Refunds</a></p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - CyberDiagram | AI-Powered Cloud Security Testing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #E5E7EB;
+            background-color: #0f1117;
+            font-size: 16px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1e293b;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 56px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #8b90a5;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #6c7ee1;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(108, 126, 225, 0.1);
+            border: 1px solid #6c7ee1;
+            border-radius: 6px;
+            color: #6c7ee1 !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .github-link:hover {
+            background: rgba(108, 126, 225, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .github-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Hero */
+        .pricing-hero {
+            margin-top: 56px;
+            padding: 5rem 2rem 3rem;
+            background: radial-gradient(ellipse at top, rgba(108, 126, 225, 0.15) 0%, transparent 50%),
+                        linear-gradient(180deg, #0f1117 0%, #020617 100%);
+            text-align: center;
+        }
+
+        .pricing-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #4fc3f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-hero p {
+            font-size: 1.25rem;
+            color: #8b90a5;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Pricing Grid */
+        .pricing-section {
+            padding: 3rem 2rem 5rem;
+            background: #0f1117;
+        }
+
+        .pricing-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(108, 126, 225, 0.2);
+            border-color: #6c7ee1;
+        }
+
+        .pricing-card.featured {
+            border-color: #6c7ee1;
+            background: linear-gradient(180deg, rgba(108, 126, 225, 0.08) 0%, #0f172a 100%);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.4rem 1.2rem;
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #E5E7EB;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-description {
+            color: #8b90a5;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .plan-price {
+            margin-bottom: 2rem;
+        }
+
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .price-period {
+            color: #8b90a5;
+            font-size: 1rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .plan-features li {
+            padding: 0.6rem 0;
+            color: #8b90a5;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .plan-features li::before {
+            content: '';
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            background: rgba(108, 126, 225, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%236c7ee1'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
+            background-size: 14px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(108, 126, 225, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(30, 41, 59, 0.8);
+            color: #6c7ee1;
+            border-color: #1e293b;
+        }
+
+        .btn-secondary:hover {
+            border-color: #6c7ee1;
+            background: rgba(30, 41, 59, 1);
+            transform: translateY(-2px);
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, #020617 0%, #0f1117 100%);
+            border-top: 1px solid #1e293b;
+        }
+
+        .comparison-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(108, 126, 225, 0.1);
+            color: #6c7ee1;
+            border: 1px solid rgba(108, 126, 225, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #8b90a5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: #8b90a5;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .table-wrapper {
+            margin-top: 3rem;
+            overflow-x: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #0f172a;
+            font-size: 1rem;
+        }
+
+        .comparison-table thead {
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
+            color: white;
+        }
+
+        .comparison-table th {
+            padding: 1.5rem 2rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-bottom: 3px solid #4fc3f7;
+        }
+
+        .comparison-table th:first-child {
+            border-top-left-radius: 12px;
+        }
+
+        .comparison-table th:last-child {
+            border-top-right-radius: 12px;
+        }
+
+        .comparison-table tbody tr {
+            border-bottom: 1px solid #1e293b;
+            transition: background-color 0.3s ease;
+        }
+
+        .comparison-table tbody tr:hover {
+            background-color: rgba(108, 126, 225, 0.05);
+        }
+
+        .comparison-table td {
+            padding: 1.5rem 2rem;
+            color: #8b90a5;
+            font-size: 1.05rem;
+        }
+
+        .comparison-table .feature-name {
+            font-weight: 600;
+            color: #E5E7EB;
+        }
+
+        .comparison-table .highlight-column {
+            background-color: rgba(108, 126, 225, 0.1);
+            color: #6c7ee1;
+            font-weight: 500;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 2rem;
+            background: #0f1117;
+            border-top: 1px solid #1e293b;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            padding: 1.5rem 2rem;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #E5E7EB;
+            margin-bottom: 0.75rem;
+        }
+
+        .faq-item p {
+            color: #8b90a5;
+            line-height: 1.7;
+        }
+
+        /* CTA */
+        .final-cta {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #6c7ee1 0%, #4fc3f7 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .final-cta p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .final-cta .btn-primary {
+            background: white;
+            color: #6c7ee1;
+        }
+
+        .final-cta .btn-primary:hover {
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem 2rem;
+            background: #020617;
+            color: #8b90a5;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            color: #E5E7EB;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #8b90a5;
+            text-decoration: none;
+            line-height: 2;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #6c7ee1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        .footer-bottom a {
+            color: #8b90a5;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: #6c7ee1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .pricing-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .github-link {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .github-icon {
+                width: 16px;
+                height: 16px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">CD</div>
+                CyberDiagram
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pricing.html" class="active">Pricing</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li>
+                    <a href="https://github.com/flashoop/mvp" target="_blank" rel="noopener noreferrer" class="github-link">
+                        <svg class="github-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        Star on GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Pricing Hero -->
+    <section class="pricing-hero">
+        <h1>Simple, Transparent Pricing</h1>
+        <p>AI-powered penetration testing at a fraction of the cost of traditional consultants. Subscribe like Netflix, secure like an expert team.</p>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="pricing-section">
+        <div class="pricing-grid">
+            <!-- Basic Plan -->
+            <div class="pricing-card">
+                <h3 class="plan-name">Basic</h3>
+                <p class="plan-description">Get started with automated cloud security scanning at no cost.</p>
+                <div class="plan-price">
+                    <span class="price-amount">$0</span>
+                    <span class="price-period">/month</span>
+                </div>
+                <ul class="plan-features">
+                    <li>Limited automated scans</li>
+                    <li>Basic compliance reports</li>
+                    <li>Community support</li>
+                    <li>Single cloud environment</li>
+                    <li>CIS Benchmark checks</li>
+                </ul>
+                <a href="https://github.com/flashoop/mvp" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Get Started Free</a>
+            </div>
+
+            <!-- Enterprise Plan -->
+            <div class="pricing-card featured">
+                <div class="popular-badge">Most Popular</div>
+                <h3 class="plan-name">Enterprise</h3>
+                <p class="plan-description">Full-featured AI penetration testing for growing businesses.</p>
+                <div class="plan-price">
+                    <span class="price-amount">$499</span>
+                    <span class="price-period">/month</span>
+                </div>
+                <ul class="plan-features">
+                    <li>Unlimited automated scans</li>
+                    <li>Compliance dashboards (PDPA, ISO 27001, PCI-DSS)</li>
+                    <li>Human review (Hybrid mode)</li>
+                    <li>AI code-fix generation (Terraform/Ansible)</li>
+                    <li>Visual attack path diagrams</li>
+                    <li>Priority support + API access</li>
+                    <li>Multi-cloud support (AWS, GCP)</li>
+                </ul>
+                <a href="mailto:flashoop@gmail.com?subject=CyberDiagram Enterprise Plan" class="btn btn-primary">Contact Sales</a>
+            </div>
+
+            <!-- Flagship Plan -->
+            <div class="pricing-card">
+                <h3 class="plan-name">Flagship</h3>
+                <p class="plan-description">Maximum protection with dedicated analyst and custom solutions.</p>
+                <div class="plan-price">
+                    <span class="price-amount">$999</span>
+                    <span class="price-period">/month</span>
+                </div>
+                <ul class="plan-features">
+                    <li>24/7 dedicated security analyst</li>
+                    <li>Advanced AI analysis with GNN attack paths</li>
+                    <li>Custom integrations</li>
+                    <li>Real-time alerts and monitoring</li>
+                    <li>Full API access + custom reports</li>
+                    <li>Multi-cloud support (AWS, GCP, Azure)</li>
+                    <li>Audit-ready documentation</li>
+                </ul>
+                <a href="mailto:flashoop@gmail.com?subject=CyberDiagram Flagship Plan" class="btn btn-secondary">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="comparison-section">
+        <div class="comparison-container">
+            <div class="section-header">
+                <span class="section-tag">Why CyberDiagram</span>
+                <h2 class="section-title">Traditional vs. CyberDiagram</h2>
+                <p class="section-description">See how AI-driven penetration testing compares to traditional consulting engagements.</p>
+            </div>
+            <div class="table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Traditional Pen-Test</th>
+                            <th class="highlight-column">CyberDiagram</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="feature-name">Target Client</td>
+                            <td>Multinational companies</td>
+                            <td class="highlight-column">SMBs (20-50 employees)</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Delivery</td>
+                            <td>Security experts on-site</td>
+                            <td class="highlight-column">AI-Driven, self-service</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Duration</td>
+                            <td>2-3 weeks</td>
+                            <td class="highlight-column"><strong>30 minutes</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Cost</td>
+                            <td>$5,000+ per test</td>
+                            <td class="highlight-column"><strong>From $499/month</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Output</td>
+                            <td>200-page complex PDF</td>
+                            <td class="highlight-column">Visual attack path diagrams</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Frequency</td>
+                            <td>Annual</td>
+                            <td class="highlight-column"><strong>Continuous 24/7</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="section-header">
+                <span class="section-tag">FAQ</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-item">
+                <h3>What cloud platforms do you support?</h3>
+                <p>We currently support AWS and GCP, with Azure support coming in 2027 H1. Our AI engine connects via secure API to scan your cloud infrastructure without requiring any agent installation.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What compliance frameworks are covered?</h3>
+                <p>CyberDiagram generates reports mapped to PDPA (Singapore/Thailand/Malaysia), ISO 27001, PCI-DSS, and CIS Benchmarks. Reports are audit-ready and formatted for both technical teams and non-technical stakeholders.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I cancel my subscription anytime?</h3>
+                <p>Yes. All subscriptions are billed monthly with no long-term commitment. You can cancel at any time and your access will continue until the end of your current billing period. See our <a href="refund.html" style="color: #6c7ee1;">refund policy</a> for details.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is this different from Wiz or other CSPM tools?</h3>
+                <p>CyberDiagram is purpose-built for SMBs. We combine AI-driven penetration testing with visual attack path diagrams that non-technical CEOs can understand, at a price point accessible to companies with 20-50 employees. We also offer an open-source option for capable teams.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is there a free trial for paid plans?</h3>
+                <p>Our Basic plan is free forever and lets you evaluate our scanning capabilities. For Enterprise and Flagship plans, contact us to arrange a pilot engagement tailored to your environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="final-cta-container">
+            <h2>Ready to Secure Your Cloud?</h2>
+            <p>Start with our free Basic plan or contact us for a personalized demo of our Enterprise features.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://github.com/flashoop/mvp" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <svg style="width: 20px; height: 20px;" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    Get Started Free
+                </a>
+                <a href="mailto:flashoop@gmail.com?subject=CyberDiagram Demo Request" class="btn btn-primary" style="background: white; color: #6c7ee1;">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>CyberDiagram</h4>
+                <p>AI-powered cloud penetration testing platform for SMEs in Southeast Asia.</p>
+                <p style="margin-top: 1rem;">
+                    <a href="https://github.com/flashoop/mvp" target="_blank" rel="noopener noreferrer">
+                        Open Source on GitHub
+                    </a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <a href="mailto:flashoop@gmail.com">flashoop@gmail.com</a>
+                <a href="https://discord.com/users/flashoop" target="_blank" rel="noopener noreferrer">Discord: flashoop</a>
+                <a href="https://www.linkedin.com/in/zhaohongri/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <a href="index.html">Home</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="https://github.com/flashoop/mvp" target="_blank" rel="noopener noreferrer">Documentation</a>
+                <a href="https://github.com/flashoop/mvp/issues" target="_blank" rel="noopener noreferrer">Report Issues</a>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <a href="terms.html">Terms of Service</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="refund.html">Refund Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CyberDiagram. Licensed under Apache 2.0 | <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a> | <a href="refund.html">Refunds</a></p>
+        </div>
+    </footer>
+</body>
+</html>
